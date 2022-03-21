@@ -8,7 +8,7 @@ import ProjectSubmissionContext from '../../ProjectSubmissionContext';
 const onSubmit = jest.fn();
 const onClose = jest.fn();
 const userId = 1;
-   
+
 describe('CreateForm', () => {
   describe('When submission is created successfully', () => {
     beforeEach(async () => {
@@ -77,10 +77,9 @@ describe('CreateForm', () => {
         fireEvent.click(screen.getByTestId('submit-btn'));
       });
     });
-    test('calls onSubmit', () => {
+
+    test('removes the whitespace and successfully submits', () => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
-    });
-    test('Displays the success screen.', () => {
       expect(screen.getByTestId('success-message').textContent).toEqual('Thanks for Submitting Your Solution!');
     });
 
