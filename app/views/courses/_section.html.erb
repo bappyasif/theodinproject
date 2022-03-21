@@ -1,0 +1,21 @@
+<%= render CardComponent.new(classes: "mb-10") do |card| %>
+  <% card.header(classes: "") do %>
+    <%= link_to path_course_path(course.path, course, anchor: section.title.parameterize), class: 'internal_link' do %>
+      <h3 id="<%= section.title.parameterize %>" class="course-section__title">
+        <%= section.title %>
+      </h3>
+    <% end %>
+    <p><%= section.description %></p>
+  <% end %>
+
+  <% card.body do %>
+    <div class="section-lessons" data-test-id="course-section">
+      <% section.lessons.each_with_index do |lesson, lesson_index| %>
+        <div class="section-lessons__item">
+          <%= render Lessons::TitleLinkComponent.new(lesson: lesson, lesson_number: lesson_index + 1)%>
+          <%= render CompleteIconButtonComponent.new(lesson: lesson, current_user: current_user) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,11 +1,4 @@
 class LessonDecorator < ApplicationDecorator
-  def title
-    if is_project?
-      "Project: #{lesson.title}"
-    else
-      lesson.title
-    end
-  end
 
   def next_lesson
     FindLesson.new(lesson, course).next_lesson

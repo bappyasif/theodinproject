@@ -1,0 +1,7 @@
+<div class="section-lessons__item">
+  <%= link_to path_course_lesson_url(course.path, course, lesson), class: 'section-lessons__item__link tracking-wide' do %>
+    <%= numbered_lesson_title(lesson, lesson_counter).html_safe %>
+  <% end %>
+
+  <%= render CompleteIconButtonComponent.new(lesson: lesson, current_user: current_user) %>
+</div>
